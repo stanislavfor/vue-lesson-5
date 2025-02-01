@@ -61,7 +61,7 @@ http://localhost:8080/
 ```
 <div id="app">
         <product-details></product-details>
-    </div>
+</div>
 ```
 Перед закрывающим тэгом </body> размещаем код Vue.js внутри тэга <script></script>
 ```
