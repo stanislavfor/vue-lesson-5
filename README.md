@@ -40,6 +40,7 @@
 1. Запуск проекта из консоли командой:
 ```
 npm run serve
+
 ```
 
 2. Проект должен открываться в браузере по ссылке - Local:   http://localhost:8080/
@@ -47,6 +48,52 @@ npm run serve
 http://localhost:8080/
 ```
 ![index](assets/task4-1.jpg)
+
+3. Так как в коде компоненты header и footer дублируются во всех файлах, <br> 
+   то данные элементы кода можно вынесены в отдельные Vue-компоненты:
+```
+Header.vue
+Footer.vue.
+
+```
+4. На каждой странице, где требуются компоненты header и footer, подключить на странице компонента .vue в <template> вместо тэга header (начального тэга, закрывающий тэг удалить).
+```<Header :navLinks="navLinks" />``` и ```<Footer :footerLinks="footerLinks" />```
+5. В части <script></script> указать импорт новых компонентов:
+```
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+```
+6. В export default указываем эти компоненты для применения в проекте (на примере Home.vue):
+```
+export default {
+  components: { Header, Footer },
+  data() {
+    return {
+      navLinks: [
+        { text: 'Проекты', href: '#project-section' },
+        { text: 'Наши успехи', href: '#achievements' },
+        { text: 'Блог', href: 'blog.html' },
+        { text: 'Контакты', href: '#contact-section' }
+      ],
+      footerLinks: [
+        { text: 'Домой', href: '#main-section' },
+        { text: 'Проекты', href: '#project-section' },
+        { text: 'Блог', href: 'blog.html' },
+        { text: 'Наши успехи', href: '#achievements' }
+      ]
+    };
+  }
+};
+
+```
+
+Передавать ссылки в Header и Footer можно через props, указывая их в data() внутри каждой страницы. <br>
+Компоненты Header.vue и Footer.vue принимают ссылки через props.  <br>
+Затем эти ссылки появляются (рендерятся) на странице с помощью v-for. <br>
+Таким образом, каждая отдельная страница будет иметь собственный набор ссылок, <br>
+позволяя их редактировать на странице .vue. <br>
+
+
 
 
 <br><br>

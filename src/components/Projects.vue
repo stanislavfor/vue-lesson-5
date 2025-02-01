@@ -1,36 +1,6 @@
 <template>
   <div class="wrapper" id="app">
-    <header class="header" id="blog-section">
-      <div class="container">
-        <div class="header__inner">
-          <picture>
-            <img class="header__logo" src="@/assets/images/logo.png" alt="">
-          </picture>
-          <nav class="header__nav">
-            <ul class="header__nav-list header__list">
-              <li class="header__list-item">
-                <a class="header__list-link" href="index.html#project-section">Домой</a>
-              </li>
-              <li class="header__list-item">
-                <a class="header__list-link" href="projects.html">Наши успехи</a>
-              </li>
-              <li class="header__list-item">
-                <a class="header__list-link" href="blog.html">Блог</a>
-              </li>
-              <li class="header__list-item">
-                <a class="header__list-link" href="#contact-section">Контакты</a>
-              </li>
-            </ul>
-            <div class="icon-menu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </nav>
-          <div class="header__plate"></div>
-        </div>
-      </div>
-    </header>
+    <Header :navLinks="navLinks" />
     <main class="main" style="margin-bottom: 150px;">
       <section class="main-projects-section" id="blog-up">
         <div class="container-blog">
@@ -82,106 +52,51 @@
         </div>
       </div>
     </main>
-    <footer class="footer" id="contact-section">
-      <div class="container">
-        <div class="footer__inner">
-          <div class="footer__logo">
-            <picture>
-              <img class="footer__logo-img" src="@/assets/images/logo.png" alt="">
-            </picture>
-            <br>
-            <br>
-            <br>
-            <p class="footer__logo-text"></p>
-            <div class="header__list-item">
-              <a class="header__list-link" href="index.html">Домой</a>
-            </div>
-            <br>
-            <div class="header__list-item">
-              <a class="header__list-link" href="blog-details.html">Новости</a>
-            </div>
-            <br>
-            <div class="header__list-item">
-              <a class="header__list-link" href="blog.html">Блог</a>
-            </div>
-            <br>
-            <div class="index.htmlheader__list-item">
-              <a class="header__list-link" href="index.html#achievements">Наши успехи</a>
-            </div>
-          </div>
-          <ul class="footer__social">
-            <li class="footer__social-item">
-              <a class="footer__social-link" href="#">
-                <picture>
-                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
-                </picture>
-              </a>
-            </li>
-            <li class="footer__social-item">
-              <a class="footer__social-link" href="#">
-                <picture>
-                  <img class="footer__social-link-img" src="@/assets/images/li.png" alt="">
-                </picture>
-              </a>
-            </li>
-            <li class="footer__social-item">
-              <a class="footer__social-link" href="#">
-                <picture>
-                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
-                </picture>
-              </a>
-            </li>
-            <li class="footer__social-item">
-              <a class="footer__social-link" href="#">
-                <picture>
-                  <img class="footer__social-link-img" src="@/assets/images/li.png" alt="">
-                </picture>
-              </a>
-            </li>
-            <li class="footer__social-item">
-              <a class="footer__social-link" href="#">
-                <picture>
-                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
-                </picture>
-              </a>
-            </li>
-          </ul>
-          <div class="footer__contacts">
-            <h4 class="footer__contacts-title">Контакты</h4>
-            <br>
-            <br>
-            <p class="footer__contacts-address">55 East Birchwood Ave. Brooklyn, New York 11201</p>
-            <a class="footer__contacts-email" href="mailto:contact@interno.com">contact@interno.com</a>
-            <a href="tel:1234567890" class="footer__contacs-phone">(123) 456 - 7890</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <Footer :footerLinks="footerLinks" />
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+
 export default {
   name: 'ProjectsComponent',
+  components: {
+    Header,
+    Footer
+  },
   data() {
     return {
+      navLinks: [
+        { text: 'Домой', href: 'index.html#project-section' },
+        { text: 'Наши успехи', href: 'projects.html' },
+        { text: 'Блог', href: 'blog.html' },
+        { text: 'Контакты', href: '#contact-section' }
+      ],
+      footerLinks: [
+        { text: 'Домой', href: 'index.html' },
+        { text: 'Новости', href: 'blog-details.html' },
+        { text: 'Блог', href: 'blog.html' },
+        { text: 'Наши успехи', href: 'index.html#achievements' }
+      ],
       projects: [
-        { id: 1, image: '@/assets/images/project-1.jpg', title: 'Минималистичная гостинная 1', tag: 'Гостинная' },
-        { id: 2, image: '@/assets/images/project-2.jpg', title: 'Минималистичная спальня 1', tag: 'Спальня' },
-        { id: 3, image: '@/assets/images/project-17.jpg', title: 'Минималистичный балкон 2', tag: 'Балкон' },
-        { id: 4, image: '@/assets/images/project-12.jpg', title: 'Минималистичная прихожая 1', tag: 'Прихожая' },
-        { id: 5, image: '@/assets/images/project-14.jpg', title: 'Минималистичная ванная 1', tag: 'Ванная' },
-        { id: 6, image: '@/assets/images/project-16.jpg', title: 'Минималистичный балкон 1', tag: 'Балкон' },
-        { id: 7, image: '@/assets/images/project-8.jpg', title: 'Минималистичная гостинная 2', tag: 'Гостинная' },
-        { id: 8, image: '@/assets/images/project-7.jpg', title: 'Минималистичная гостинная 3', tag: 'Гостинная' },
-        { id: 9, image: '@/assets/images/project-19.jpg', title: 'Минималистичная кухня 1', tag: 'Кухня' },
-        { id: 10, image: '@/assets/images/project-10.jpg', title: 'Минималистичная прихожая 8', tag: 'Прихожая' },
-        { id: 11, image: '@/assets/images/project-11.jpg', title: 'Минималистичная прихожая 9', tag: 'Прихожая' },
-        { id: 12, image: '@/assets/images/project-22.jpg', title: 'Минималистичная кухня 14', tag: 'Кухня' },
-        { id: 13, image: '@/assets/images/project-9.jpg', title: 'Минималистичная спальня 15', tag: 'Спальня' },
-        { id: 14, image: '@/assets/images/project-21.jpg', title: 'Минималистичная кухня 9', tag: 'Кухня' },
-        { id: 15, image: '@/assets/images/project-13.jpg', title: 'Минималистичная ванная 2', tag: 'Ванная' },
-        { id: 16, image: '@/assets/images/project-23.jpg', title: 'Минималистичная ванная 3', tag: 'Ванная' }
+        { id: 1, image: require('@/assets/images/project-1.jpg'), title: 'Минималистичная гостинная 1', tag: 'Гостинная' },
+        { id: 2, image: require('@/assets/images/project-2.jpg'), title: 'Минималистичная спальня 1', tag: 'Спальня' },
+        { id: 3, image: require('@/assets/images/project-17.jpg'), title: 'Минималистичный балкон 2', tag: 'Балкон' },
+        { id: 4, image: require('@/assets/images/project-12.jpg'), title: 'Минималистичная прихожая 1', tag: 'Прихожая' },
+        { id: 5, image: require('@/assets/images/project-14.jpg'), title: 'Минималистичная ванная 1', tag: 'Ванная' },
+        { id: 6, image: require('@/assets/images/project-16.jpg'), title: 'Минималистичный балкон 1', tag: 'Балкон' },
+        { id: 7, image: require('@/assets/images/project-8.jpg'), title: 'Минималистичная гостинная 2', tag: 'Гостинная' },
+        { id: 8, image: require('@/assets/images/project-7.jpg'), title: 'Минималистичная гостинная 3', tag: 'Гостинная' },
+        { id: 9, image: require('@/assets/images/project-19.jpg'), title: 'Минималистичная кухня 1', tag: 'Кухня' },
+        { id: 10, image: require('@/assets/images/project-10.jpg'), title: 'Минималистичная прихожая 8', tag: 'Прихожая' },
+        { id: 11, image: require('@/assets/images/project-11.jpg'), title: 'Минималистичная прихожая 9', tag: 'Прихожая' },
+        { id: 12, image: require('@/assets/images/project-22.jpg'), title: 'Минималистичная кухня 14', tag: 'Кухня' },
+        { id: 13, image: require('@/assets/images/project-9.jpg'), title: 'Минималистичная спальня 15', tag: 'Спальня' },
+        { id: 14, image: require('@/assets/images/project-21.jpg'), title: 'Минималистичная кухня 9', tag: 'Кухня' },
+        { id: 15, image: require('@/assets/images/project-13.jpg'), title: 'Минималистичная ванная 2', tag: 'Ванная' },
+        { id: 16, image: require('@/assets/images/project-23.jpg'), title: 'Минималистичная ванная 3', tag: 'Ванная' }
       ],
       selectedTag: ''
     };
@@ -202,7 +117,6 @@ export default {
       const buttons = this.$el.querySelectorAll('.projects-menu__buttons button');
       const borderLine = this.$el.querySelector('.border-line');
       borderLine.style.transform = `translateX(${buttons.length - 1}00%)`;
-
       buttons.forEach((button, index) => {
         button.addEventListener('click', () => {
           borderLine.style.transform = `translateX(${index * 100}%)`;
@@ -224,7 +138,7 @@ export default {
     this.setupButtonListeners();
     this.setupSmoothScroll();
   }
-}
+};
 </script>
 
 <style scoped>

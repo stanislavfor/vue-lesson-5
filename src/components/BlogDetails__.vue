@@ -1,6 +1,36 @@
 <template>
   <div class="wrapper">
-    <Header :navLinks="navLinks" />
+    <header class="header" id="blog-section">
+      <div class="container">
+        <div class="header__inner">
+          <picture>
+            <img class="header__logo" src="@/assets/images/logo.png" alt="">
+          </picture>
+          <nav class="header__nav">
+            <ul class="header__nav-list header__list">
+              <li class="header__list-item">
+                <a class="header__list-link" href="projects.html">Проекты</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__list-link" href="blog.html">Блог</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__list-link" href="index.html#main-section">Домой</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__list-link" href="#contact-section">Контакты</a>
+              </li>
+            </ul>
+            <div class="icon-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </nav>
+          <div class="header__plate"></div>
+        </div>
+      </div>
+    </header>
     <main class="main">
       <section class="main-blog-details-section"></section>
       <section class="main-blog-details">
@@ -14,53 +44,90 @@
         </div>
       </section>
     </main>
-    <Footer :footerLinks="footerLinks" />
+    <footer class="footer" id="contact-section">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__logo">
+            <picture>
+              <img class="footer__logo-img" src="@/assets/images/logo.png" alt="">
+            </picture>
+            <br>
+            <br>
+            <br>
+            <p class="footer__logo-text"></p>
+            <div class="header__list-item">
+              <a class="header__list-link" href="index.html#main-section">Домой</a>
+            </div>
+            <br>
+            <div class="header__list-item">
+              <a class="header__list-link" href="projects.html">Проекты</a>
+            </div>
+            <br>
+            <div class="header__list-item">
+              <a class="header__list-link" href="blog.html">Блог</a>
+            </div>
+            <br>
+            <div class="header__list-item">
+              <a class="header__list-link" href="index.html#achievements">Наши успехи</a>
+            </div>
+          </div>
+          <ul class="footer__social">
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/li.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/li.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
+                </picture>
+              </a>
+            </li>
+          </ul>
+          <div class="footer__contacts">
+            <h4 class="footer__contacts-title">Контакты</h4>
+            <br>
+            <br>
+            <p class="footer__contacts-address">55 East Birchwood Ave. Brooklyn, New York 11201</p>
+            <a class="footer__contacts-email" href="mailto:contact@interno.com">contact@interno.com</a>
+            <a href="tel:1234567890" class="footer__contacs-phone">(123) 456 - 7890</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-
 export default {
   name: 'BlogDetailsComponent',
-  components: {
-    Header,
-    Footer,
-    'blog-posts': {
-      props: ['posts'],
-      template: `
-        <div>
-          <div v-for="post in posts" :key="post.title">
-            <h2>{{ post.title }}</h2>
-            <p class="blog-details__article-date">{{ post.date }}</p>
-            <p class="blog-details__article-tags">{{ post.tag }}</p>
-            <div v-for="(content, index) in post.content" :key="index">
-              <picture v-if="content.type === 'img'">
-                <img class="blog-details__article-img" :src="content.src" alt="">
-              </picture>
-              <p v-if="content.type === 'text'" class="blog-details__article-text">{{ content.text }}</p>
-            </div>
-          </div>
-        </div>
-      `
-    }
-  },
   data() {
     return {
       selectedTag: '',
-      navLinks: [
-        { text: 'Проекты', href: 'projects.html' },
-        { text: 'Блог', href: 'blog.html' },
-        { text: 'Домой', href: 'index.html#main-section' },
-        { text: 'Контакты', href: '#contact-section' }
-      ],
-      footerLinks: [
-        { text: 'Домой', href: 'index.html#main-section' },
-        { text: 'Проекты', href: 'projects.html' },
-        { text: 'Блог', href: 'blog.html' },
-        { text: 'Наши успехи', href: 'index.html#achievements' }
-      ],
       posts: [
         {
           title: 'Создадим лучший макет перепланировки',
@@ -147,6 +214,26 @@ export default {
   methods: {
     filterPosts(tag) {
       this.selectedTag = tag;
+    }
+  },
+  components: {
+    'blog-posts': {
+      props: ['posts'],
+      template: `
+        <div>
+          <div v-for="post in posts" :key="post.title">
+            <h2>{{ post.title }}</h2>
+            <p class="blog-details__article-date">{{ post.date }}</p>
+            <p class="blog-details__article-tags">{{ post.tag }}</p>
+            <div v-for="(content, index) in post.content" :key="index">
+              <picture v-if="content.type === 'img'">
+                <img class="blog-details__article-img" :src="content.src" alt="">
+              </picture>
+              <p v-if="content.type === 'text'" class="blog-details__article-text">{{ content.text }}</p>
+            </div>
+          </div>
+        </div>
+      `
     }
   }
 };

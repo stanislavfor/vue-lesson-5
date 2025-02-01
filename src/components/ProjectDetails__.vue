@@ -1,6 +1,36 @@
 <template>
   <div class="wrapper">
-    <Header :navLinks="navLinks" />
+    <header class="header" id="blog-section">
+      <div class="container">
+        <div class="header__inner">
+          <picture>
+            <img class="header__logo" src="@/assets/images/logo.png" alt="">
+          </picture>
+          <nav class="header__nav">
+            <ul class="header__nav-list header__list">
+              <li class="header__list-item">
+                <a class="header__list-link" href="index.html#project-section">Домой</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__list-link" href="projects.html">Наши успехи</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__list-link" href="blog.html">Блог</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__list-link" href="#contact-section">Контакты</a>
+              </li>
+            </ul>
+            <div class="icon-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </nav>
+          <div class="header__plate"></div>
+        </div>
+      </div>
+    </header>
     <main class="main">
       <section class="main-project-details" id="project-details-up">
         <div class="container-blog">
@@ -57,35 +87,90 @@
         </div>
       </div>
     </main>
-    <Footer :footerLinks="footerLinks" />
+    <footer class="footer" id="contact-section">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__logo">
+            <picture>
+              <img class="footer__logo-img" src="@/assets/images/logo.png" alt="">
+            </picture>
+            <br>
+            <br>
+            <br>
+            <p class="footer__logo-text"></p>
+            <div class="header__list-item">
+              <a class="header__list-link" href="index.html#main-section">Домой</a>
+            </div>
+            <br>
+            <div class="header__list-item">
+              <a class="header__list-link" href="blog-details.html">Новости</a>
+            </div>
+            <br>
+            <div class="header__list-item">
+              <a class="header__list-link" href="blog.html">Блог</a>
+            </div>
+            <br>
+            <div class="header__list-item">
+              <a class="header__list-link" href="index.html#achievements">Наши успехи</a>
+            </div>
+          </div>
+          <ul class="footer__social">
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/li.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/li.png" alt="">
+                </picture>
+              </a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">
+                <picture>
+                  <img class="footer__social-link-img" src="@/assets/images/tw.png" alt="">
+                </picture>
+              </a>
+            </li>
+          </ul>
+          <div class="footer__contacts">
+            <h4 class="footer__contacts-title">Контакты</h4>
+            <br>
+            <br>
+            <p class="footer__contacts-address">55 East Birchwood Ave. Brooklyn, New York 11201</p>
+            <a class="footer__contacts-email" href="mailto:contact@interno.com">contact@interno.com</a>
+            <a href="tel:1234567890" class="footer__contacs-phone">(123) 456 - 7890</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-
 export default {
   name: 'ProjectDetailsComponent',
-  components: {
-    Header,
-    Footer
-  },
   data() {
     return {
-      currentIndex: 0,
-      navLinks: [
-        { text: 'Домой', href: 'index.html#project-section' },
-        { text: 'Наши успехи', href: 'projects.html' },
-        { text: 'Блог', href: 'blog.html' },
-        { text: 'Контакты', href: '#contact-section' }
-      ],
-      footerLinks: [
-        { text: 'Домой', href: 'index.html#main-section' },
-        { text: 'Новости', href: 'blog-details.html' },
-        { text: 'Блог', href: 'blog.html' },
-        { text: 'Наши успехи', href: 'index.html#achievements' }
-      ]
+      currentIndex: 0
     };
   },
   methods: {
